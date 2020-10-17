@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="b_cours_2" />
+        <module name="sandbox" />
       </profile>
     </annotationProcessing>
   </component>
