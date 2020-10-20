@@ -7,7 +7,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
-import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     public WebDriver driver;
@@ -36,7 +35,7 @@ public class ApplicationManager {
             driver = new InternetExplorerDriver();
         }
         //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        driver.navigate().to("http://localhost:8080/addressbook/group.php");
+        driver.navigate().to("http://localhost:8080/addressbook/");
         groupHelper = new GroupHelper(driver);
         contactHelper = new ContactHelper(driver);
         navigationHelper = new NavigationHelper(driver);
