@@ -7,7 +7,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import java.util.HashSet;
 import java.util.List;
 
-public class GroupCreationTests extends TestBase {
+public class GroupCreationTestsLambda extends TestBase {
 
     @Test
     public void testGroupCreation() {
@@ -16,17 +16,10 @@ public class GroupCreationTests extends TestBase {
         GroupData group = new GroupData().withName("test1");
         app.group().create(group);
         List<GroupData> after = app.group().list();
-        Assert.assertEquals(after.size(),before.size() + 1);
+        Assert.assertEquals(after.size(), before.size() + 1);
 
+        group.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
         before.add(group);
-        int max = 0;
-        for(GroupData g : after){
-            if(g.getId() > max){
-                max = g.getId();
-            }
-        }
-        group.withId(max);
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
-
     }
 }
